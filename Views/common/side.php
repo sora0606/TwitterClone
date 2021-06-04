@@ -8,7 +8,7 @@
             <li class="nav-item"><a href="profile.php" class="nav-link"><img src="<?php echo HOME_URL;?>Views/img/icon-profile.svg" alt="個人情報"></a></li>
             <li class="nav-item"><a href="post.php" class="nav-link"><img src="<?php echo HOME_URL;?>Views/img/icon-post-tweet-twitterblue.svg" class="post-tweet" alt="つぶやき"></a></li>
             <!-- popoverをdata-bsにより設定 -->
-            <li class="nav-item myicon"><img src="<?php echo HOME_URL;?>Views/img_uploaded/user/sample-person.jpg" class="js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement='right' data-bs-content="<a href='profile.php'>プロフィール</a><br><a href='sign-out.php'>ログアウト</a>" data-bs-html="true"></li>
+            <li class="nav-item myicon"><img src="<?php echo htmlspecialchars($view_user['image_path']); ?>" class="js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement='right' data-bs-content="<a href='profile.php'>プロフィール</a><br><a href='sign-out.php'>ログアウト</a>" data-bs-html="true"></li>
         </ul>
     </div>
 </div>
