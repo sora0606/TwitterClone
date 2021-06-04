@@ -11,4 +11,11 @@ date_default_timezone_set("Asia/Tokyo");
 
 define('HOME_URL',"/twitter/");
 
+// データベースの接続情報
+
+define( "DB_HOST" , "localhost" );
+define( "DB_USER" , "test" );
+define( "DB_PASS" , "testpass" );
+define( "DB_NAME" , "twitter_clone" );
+
 ?>
