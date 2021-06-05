@@ -12,7 +12,7 @@ function createUser(array $data)
 {
     $mysqli= new mysqli(DB_HOST , DB_USER , DB_PASS , DB_NAME);
     // 接続チェック
-    if( $mysqli -> connect_errno ){
+    if( $mysqli -> connect_error ){
         echo 'MySQLの接続に失敗しました。：'.$mysqli -> connect_error."\n";
         exit;
     }
@@ -53,7 +53,7 @@ function findUserAndCheckPassword(string $email , string $password)
 {
     $mysqli= new mysqli(DB_HOST , DB_USER , DB_PASS , DB_NAME);
     // 接続チェック
-    if( $mysqli->connect_errno ){
+    if( $mysqli->connect_error ){
         echo 'MySQLの接続に失敗しました。：'.$mysqli -> connect_error."\n";
         exit;
     }

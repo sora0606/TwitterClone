@@ -12,10 +12,10 @@ include_once "../Models/users.php";
 // -$_POSTを使用しましたが、filter_input()という関数があります。
 if(isset($_POST['nickname']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])){
     $data = [
-        'nickname' => $_POST['nickname'],
-        'name' => $_POST['name'],
-        'email' => $_POST['email'],
-        'password' => $_POST['password']
+        'nickname'      => $_POST['nickname'],
+        'name'          => $_POST['name'],
+        'email'         => $_POST['email'],
+        'password'      => $_POST['password']
     ];
 
     if(createUser($data)){
