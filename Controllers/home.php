@@ -12,8 +12,8 @@ include_once "../Models/tweets.php";
 
 // ログインしているか
 $user = getUserSession();
-
 if(!$user){
+    // ログインしていない場合
     header("Location:" . HOME_URL . "Controllers/sign-up.php");
     exit;
 }
