@@ -14,10 +14,10 @@
 function buildImagePath(string $name = null , string $type)
 {
     if($type === "user" && !isset($name)){
-        return HOME_URL . "/Views/img/icon-default-user.svg";
+        return HOME_URL . "Views/img/icon-default-user.svg";
     }
 
-    return HOME_URL . "/Views/img_uploaded/" . $type . '/' . htmlspecialchars($name);
+    return HOME_URL . "Views/img_uploaded/" . $type . '/' . htmlspecialchars($name);
 }
 
 /**
@@ -140,14 +140,14 @@ function uploadImage(array $user , array $file , string $type)
     $directory = '../Views/img_uploaded/' . $type . '/';
 
     // 画像パスの作成
-    $image_path = $directory.$image_name;
+    $image_path = $directory . $image_name;
 
     // 画像の設置
     move_uploaded_file($file["tmp_name"] , $image_path);
 
     // 画像ファイルかチェック
     if(exif_imagetype($image_path)){
-        return $image_path;
+        return $image_name;
     }
 
     // 画像ファイル以外の場合

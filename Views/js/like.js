@@ -22,7 +22,7 @@ $(function(){
                 timeout: 10000
             })
             // 取り消しが成功
-            .done((data) => {
+            .done(() => {
                 // いいね！カウントを減らす
                 like_count--;
                 like_count_obj.html(like_count);
