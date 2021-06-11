@@ -2,6 +2,7 @@
 ///////////////////////////////////////
 // ツイートデータを処理
 ///////////////////////////////////////
+
 /**
  * ツイート作成
  *
@@ -32,6 +33,42 @@ function createTweet(array $data)
 
     // 接続を閉じる
     $statement -> close();
+    $mysqli -> close();
+
+    return $response;
+}
+
+/**
+ * ツイート一件を取得
+ *
+ * @param integer $tweet_id
+ * @return array|false
+ */
+function findTweet(int $tweet_id)
+{
+    $mysqli= new mysqli(DB_HOST , DB_USER , DB_PASS , DB_NAME);
+    // 接続チェック
+    if( $mysqli -> connect_error ){
+        echo 'MySQLの接続に失敗しました。：'.$mysqli -> connect_error."\n";
+        exit;
+    }
+
+    // エスケープ
+    $tweet_id = $mysqli -> real_escape_string($tweet_id);
+
+    // 検索のSQLを作成
+    $query = "select * from tweets where status = 'active' and id = '" . $tweet_id . "'";
+
+    // SQL実行
+    if($result = $mysqli -> query($query)){
+        // データ一件を取得
+        $response = $result -> fetch_array(MYSQLI_ASSOC);
+    }else{
+        $response = false;
+        echo 'エラーメッセージ：' . $mysqli -> error . "\n";
+    }
+
+    // 接続を閉じる
     $mysqli -> close();
 
     return $response;

@@ -10,6 +10,11 @@ include_once "../util.php";
 
 // いいね！データ操作モデルを読み込み
 include_once "../Models/likes.php";
+// フォローデータ操作モデルを読み込み
+include_once "../Models/tweets.php";
+// 通知データ操作モデルを読み込み
+include_once "../Models/notifications.php";
+
 
 // ログインしているか
 $user = getUserSession();
@@ -28,6 +33,19 @@ if(isset($_POST['tweet_id'])){
     ];
     // いいね！登録
     $like_id = createLike($data);
+
+    // ツイートを取得
+    $tweet = findTweet($_POST['tweet_id']);
+
+    // 通知を登録
+    if($tweet){
+        $data_notification = [
+            'recieved_user_id' => $tweet['user_id'],
+            'sent_user_id' => $user['id'],
+            'message' => 'いいね！されました。'
+        ];
+        createNotification($data_notification);
+    }
 }
 
 // いいね！IDが指定されている場合は、いいね！を削除
@@ -46,5 +64,5 @@ $response = [
     // いいね！したときに値が入る
     'like_id' => $like_id,
 ];
-header('Content-Type: application/json; charset = uft-8');
-echo json_encode($response);
+// header('Content-Type: application/json; charset = uft-8');
+// echo json_encode($response);
