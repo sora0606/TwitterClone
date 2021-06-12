@@ -53,13 +53,18 @@ if(isset($_POST['nickname']) && isset($_POST['name']) && isset($_POST['email']))
 // 表示するユーザーIDを取得（デフォルトはログインユーザー）
 $requested_user_id = $user['id'];
 if(isset($_GET['user_id'])){
-    $requested_user_id = $_GET['user_id'];
+    $requested_user_id = (int)$_GET['user_id'];
 }
 
 // 画面表示
 $view_user = $user;
 // プロフィールの詳細を取得
 $view_requested_user = findUser($requested_user_id , $user['id']);
+// ユーザーが見つからない場合、エラー表示
+if(!$view_requested_user){
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
 //ツイート一覧
 $view_tweets = findTweets($user , null , [$requested_user_id]);
 include_once "../Views/profile.php";

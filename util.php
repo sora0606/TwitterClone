@@ -34,16 +34,16 @@ function convertToDayTimeAgo(string $datetime)
 
     if($diff_sec < 60){
         $time = $diff_sec;
-        $unix = "秒前";
+        $unit = "秒前";
     }elseif($diff_sec < 3600){
         $time = $diff_sec / 60;
-        $unix = "分前";
+        $unit = "分前";
     }elseif($diff_sec < 86400){
         $time = $diff_sec / 3600;
-        $unix = "時間前";
+        $unit = "時間前";
     }elseif($diff_sec < 2764800){
         $time = $diff_sec / 86400;
-        $unix = "日前";
+        $unit = "日前";
     }else{
         if(date('Y') != date('Y',$unix)){
             $time = date("Y年n月j日",$unix);
@@ -52,7 +52,7 @@ function convertToDayTimeAgo(string $datetime)
         }
         return $time;
     }
-    return (int)$time.$unix;
+    return (int)$time.$unit;
 }
 
 /**
