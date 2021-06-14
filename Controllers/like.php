@@ -64,5 +64,5 @@ $response = [
     // いいね！したときに値が入る
     'like_id' => $like_id,
 ];
-// header('Content-Type: application/json; charset = uft-8');
-// echo json_encode($response);
+header('Content-Type: application/json; charset = uft-8');
+echo json_encode($response);
